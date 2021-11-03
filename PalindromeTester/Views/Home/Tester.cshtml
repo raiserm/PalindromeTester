@@ -1,0 +1,27 @@
+﻿@model TesterViewModel
+
+
+<h2>Palindromiter</h2>
+<p>Enter a positive number and find out if the number you entered is a palindrome.</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberToTest, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumberToTest, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumberToTest, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="buttonsDiv" style="text-align: right">
+            <hr />
+            <input type="submit" value="Test Palindromosity" class="btn btn-primary" />
+        </div>
+    </div>
+}
